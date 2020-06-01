@@ -31,7 +31,8 @@ export default class SignUpModal extends Component {
 		const response = await SignUp.signUpUser(user)
 		if (response.statusCode !== 200) {
 			this.setState({ message: response.message })
-		}
+		} else
+		this.props.toggleModal()
 	}
 
 	render() {
