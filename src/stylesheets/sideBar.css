@@ -1,0 +1,16 @@
+.titleWord {
+  font-size:2rem; 
+  color: white; 
+  font-weight:bold; 
+}
+
+.sideBarWords {
+  font-size:1rem; 
+  color: white; 
+  font-weight:bold; 
+}
+
+.sideBarDivisor {
+  border-top: 1px solid white;
+  margin: 0 1rem 1rem;
+}
