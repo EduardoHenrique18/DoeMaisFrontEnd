@@ -1,4 +1,4 @@
-import ReturnHttp from '../entities/returnHttp'
+import ReturnHttp from '../../entities/returnHttp'
 
 export default class SignUpUseCase {
 	constructor(signUpService) {

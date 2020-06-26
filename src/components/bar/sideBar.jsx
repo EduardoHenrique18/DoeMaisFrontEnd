@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Nav, NavItem, NavLink } from 'reactstrap'
-import '../stylesheets/sideBar.css'
+import '../../stylesheets/sideBar.css'
 
 export default class SideBar extends Component {
 	constructor(props) {
@@ -20,6 +20,9 @@ export default class SideBar extends Component {
         </NavItem>
         <NavItem>
           <NavLink href="#" className='sideBarWords'>Perfil</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#" className='sideBarWords'>Ranking</NavLink>
         </NavItem>
       </Nav>
         </div>

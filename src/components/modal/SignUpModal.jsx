@@ -13,7 +13,7 @@ import {
 
 import React, { Component } from 'react'
 
-import SignUp from '../core/src/adapter/SignUpAdapter'
+import SignUp from '../../core/src/adapter/user/SignUpAdapter'
 
 export default class SignUpModal extends Component {
 	constructor(props) {
@@ -38,7 +38,7 @@ export default class SignUpModal extends Component {
 	render() {
 		return (
 			<>
-				<Modal isOpen={this.props.showModal}>
+				<Modal isOpen={this.props.showModal} toggle={this.props.toggleModal}>
 					{this.state.message !== '' ? (
 						<Alert color='danger' className='text-center'>
 							{' '}
@@ -112,15 +112,12 @@ export default class SignUpModal extends Component {
 						<Button
 							color='primary'
 							onClick={async () => {
-								const user = {
-									user: {
-										userName: this.state.userName,
-										email: this.state.email,
-										dateOfBirth: this.state.dateOfBirth,
-										password: this.state.password,
-									},
-								}
-								this.CreateUser(user)
+								this.CreateUser({	
+									userName: this.state.userName,
+									email: this.state.email,
+									dateOfBirth: this.state.dateOfBirth,
+									password: this.state.password
+								})
 							}}
 						>
 							Cadastrar

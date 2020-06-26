@@ -4,16 +4,18 @@ import React, { Component } from 'react'
 
 import '../stylesheets/sign.css'
 
-import SignUpModal from './SignUpModal'
+import SignUpModal from './modal/SignUpModal'
 
-import SignIn from '../core/src/adapter/SignInAdapter'
+import SignIn from '../core/src/adapter/user/SignInAdapter'
 
 export default class SignInComponent extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			showModal: false,
-			message: ''
+			message: '',
+			email: '',
+			password: ''
 		}
 	}
 
@@ -21,13 +23,14 @@ export default class SignInComponent extends Component {
 		this.setState({ showModal: !this.state.showModal })
 	}
 
-	signIn = async (user) => {
-		const response = await SignIn.SignInUser(user)
+	signIn = async () => {
+		const response = await SignIn.SignInUser({email: this.state.email, password: this.state.password})
 		if (response.statusCode !== 200) {
 			this.setState({ message: response.message })
-		} else
+		} else {
 			localStorage.setItem('user', JSON.stringify(response.data));
-			this.props.history.push("");
+			this.props.history.push("/home");
+		}
 	}
 
 	render() {
@@ -45,7 +48,12 @@ export default class SignInComponent extends Component {
 			)}
 					<FormGroup>
 						<Label for='email'>Email</Label>
-						<Input type='text' id='email' placeholder='Informe seu e-mail' />
+						<Input type='text'
+						 id='email' 
+						 placeholder='Informe seu e-mail'
+						 onChange={(e) => {
+							this.setState({ email: e.target.value })
+						}} />
 					</FormGroup>
 					<FormGroup>
 						<Label for='password'>Senha</Label>
@@ -53,9 +61,15 @@ export default class SignInComponent extends Component {
 							type='password'
 							id='password'
 							placeholder='Informe a senha'
+							onChange={(e) => {
+								this.setState({ password: e.target.value })
+							}}
 						/>
 					</FormGroup>
-					<Button color='info' block>
+					<Button 
+						color='info'  
+						block
+						onClick={this.signIn}>
 						Entrar
 					</Button>
 					<Button

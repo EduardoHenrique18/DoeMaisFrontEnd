@@ -1,4 +1,4 @@
-import ReturnHttp from '../entities/returnHttp'
+import ReturnHttp from '../../entities/returnHttp'
 
 export default class SignInUseCase {
 	constructor(SignInService) {
@@ -7,6 +7,7 @@ export default class SignInUseCase {
 
 	async SignIn(user) {
 		const response = await this.SignInService.SignIn(user)
+		console.log(response)
 		const returnHttp = new ReturnHttp(
 			response.data,
 			response.message,

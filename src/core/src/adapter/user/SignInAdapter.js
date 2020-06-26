@@ -1,5 +1,5 @@
-import SignInUseCase from '../useCases/SignInUseCase'
-import SignInService from '../services/SignInService'
+import SignInUseCase from '../../useCases/user/SignInUseCase'
+import SignInService from '../../services/user/SignInService'
 
 class SignInAdapter {
 	constructor() {
